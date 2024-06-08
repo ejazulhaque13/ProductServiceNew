@@ -1,20 +1,30 @@
 package dev.ejaz.productservicenew.controllers;
 
+import dev.ejaz.productservicenew.services.CategoryService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/products/categories")
 public class CategoryController {
-    @GetMapping("/products/categories")
+    private CategoryService categoryService;
 
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService=categoryService;
+
+    }
+
+    @GetMapping("")
     public String getAllCategory (){
-        return "getting all category";
+        return "Getting all category";
 
     }
-    @GetMapping("/products/categories/{categoryID}")
+    @GetMapping("{categoryID}")
     public String getProductsInCategory(@PathVariable Long categoryID){
-        return "get product in category";
+        return "Get product in category";
 
     }
+
 }
